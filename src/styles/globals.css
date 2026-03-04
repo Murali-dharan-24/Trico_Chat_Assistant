@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --font-family-sans: 'Inter', sans-serif;
+  --font-family-display: 'Syne', sans-serif;
+  --font-family-mono: 'JetBrains Mono', monospace;
+}
+
+@layer base {
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg-primary: #070b14;
+    --bg-secondary: #0d1526;
+    --bg-tertiary: #111d35;
+    --accent-primary: #3b82f6;
+    --accent-secondary: #60a5fa;
+    --accent-glow: rgba(59,130,246,0.25);
+    --surface: #111d35;
+    --surface-hover: #172340;
+    --surface-border: rgba(59,130,246,0.12);
+    --text-primary: #e8f0ff;
+    --text-muted: #5a7aaa;
+    --text-faint: #1e3a5f;
+    --gradient: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+    transition: background-color 0.4s ease, color 0.3s ease;
+  }
+
+  /* Fix mobile input zoom */
+  input, textarea, select {
+    font-size: 16px;
+  }
+
+  @media (min-width: 640px) {
+    input, textarea, select {
+      font-size: 14px;
+    }
+  }
+
+  ::-webkit-scrollbar { width: 3px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--surface); border-radius: 4px; }
+}
+
+/* Notes editor rich text styles */
+.notes-editor:empty::before {
+  content: attr(data-placeholder);
+  color: var(--text-faint);
+  pointer-events: none;
+}
+
+.notes-editor h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  font-family: 'Syne', sans-serif;
+  color: var(--text-primary);
+  margin: 1rem 0 0.5rem;
+}
+
+.notes-editor p {
+  margin-bottom: 0.5rem;
+}
+
+.notes-editor strong {
+  font-weight: 600;
+  color: var(--accent-secondary);
+}
+
+.notes-editor em {
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+.notes-editor ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.notes-editor ol {
+  list-style: decimal;
+  padding-left: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.notes-editor li {
+  margin-bottom: 0.25rem;
+}
+
+.notes-editor blockquote {
+  border-left: 3px solid var(--accent-primary);
+  padding-left: 1rem;
+  margin: 0.75rem 0;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.notes-editor pre {
+  background: var(--bg-primary);
+  border: 1px solid var(--surface-border);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  margin: 0.75rem 0;
+  overflow-x: auto;
+  color: var(--accent-secondary);
+}
+
+.notes-editor hr {
+  border: none;
+  border-top: 1px solid var(--surface-border);
+  margin: 1rem 0;
+}
+
+.notes-editor a {
+  color: var(--accent-secondary);
+  text-decoration: underline;
+}
